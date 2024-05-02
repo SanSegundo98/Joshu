@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { HeaderComponent } from '../layout/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [HeaderComponent, ReactiveFormsModule],
   templateUrl: './Home.component.html',
   styleUrl: './Home.component.css',
 })

@@ -1,11 +1,42 @@
 <app-header></app-header>
 <div class="flex justify-between w-[90%] h-full mx-auto mt-16">
-    <div class="text-left">content</div>
-    <div class="w-1/2 p-3 border-l-2 border-solid about border-fuchsia-400">
-        <p class="text-8xl text-right text-bright-turquoise-100 font-[Quicksand] mb-20">About Joshu:</p>
-        <p class="text-xl font-medium leading-9 text-right text-pretty text-slate-50">Joshu (tries) to help you learn japanese. Making use of <a href="https://en.wikipedia.org/wiki/Mnemonic">mnemonics</a>, the objective is to allow you to more easily remember certain words you might struggle to remember. <br><br>
-        For example, <strong>何方</strong> would be equal to <i>'Donatello'</i>, like the sculptor (or the turtle, if you prefer). <br><br>
-        To start using Joshu, just sign up using the form to the left, or login if you are already signed up, and then add a few cards. <br><br>
-        Happy learning. <strong>頑張って！</strong></p>
-    </div>
+  <div class="w-3/5 text-left regOrLoginForm">
+    <form class="w-3/4 px-48 py-32 border-b-2 border-l-2 border-solid border-bright-turquoise-100">
+      <div class="flex flex-col mb-4" >
+        <label for="regEmail" class="my-4 font-semibold text-slate-50 text-opacity-90">Email address</label>
+        <input type="email"
+          class="p-2 duration-200 bg-transparent rounded-sm outline-2 outline outline-lavender-rose-400 hover:bg-slate-50/20 hover:outline-lavender-rose-600"
+          id="regEmail" aria-describedby="registrationEmailField" placeholder="Enter your email"/>
+      </div>
+
+      <div class="flex flex-col mb-12" >
+        <label for="regPassword" class="my-4 font-semibold text-slate-50 text-opacity-90">Password</label>
+        <input type="password"
+        class="p-2 duration-200 bg-transparent rounded-sm outline-2 outline outline-lavender-rose-400 hover:bg-slate-50/20 hover:outline-lavender-rose-600"
+          id="regPassword" placeholder="Enter your password" />
+      </div>
+
+      <button type="button"
+        class="rounded bg-bright-turquoise-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-bright-turquoise-600 hover:shadow-primary-2 focus:bg-bright-turquoise-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-bright-turquoise-600 active:shadow-primary-2"
+        data-twe-ripple-init data-twe-ripple-color="light">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div class="w-1/2 px-8 border-l-2 border-solid about border-lavender-rose-400">
+    <p class="text-8xl text-right text-bright-turquoise-100 font-[Quicksand] mb-20">
+      About Joshu:
+    </p>
+    <p class="text-xl font-medium leading-9 text-right text-pretty text-slate-50">
+      Joshu (tries) to help you learn japanese. Making use of
+      <a href="https://en.wikipedia.org/wiki/Mnemonic">mnemonics</a>, the
+      objective is to allow you to more easily remember certain words you might
+      struggle to remember. <br /><br />
+      For example, <strong>何方</strong> would be equal to <i>'Donatello'</i>,
+      like the sculptor (or the turtle, if you prefer). <br /><br />
+      To start using Joshu, just sign up using the form to the left, or login if
+      you are already signed up, and then add a few cards, at the top of the page. <br /><br />
+      Happy learning. <strong>頑張って！</strong>
+    </p>
+  </div>
 </div>

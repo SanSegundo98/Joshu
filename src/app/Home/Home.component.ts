@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { User } from './../functionality/types/user';
+import { UserService } from '../functionality/services/user.service';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../layout/header/header.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Ripple, Input, initTWE } from "tw-elements";
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,43 @@ import { Ripple, Input, initTWE } from "tw-elements";
   styleUrl: './Home.component.css',
 })
 export class HomeComponent {
-  ngOnInit(): void {
-    initTWE({Ripple, Input})
+  userService = inject(UserService)
+  user: User = {
+    username: '',
+    password: '',
+    email: '',
+    userID: 0
   }
+
+  formNewUser = new FormGroup({
+    emailField: new FormControl<string>(''),
+    passwordField: new FormControl<string>(''),
+    usernameField: new FormControl<string>('')
+  }) 
+
+
+public get emailField() {
+  return this.formNewUser.get('emailField')
+}
+public get passwordField() {
+  return this.formNewUser.get('passwordField')
+}
+public get usernameField() {
+  return this.formNewUser.get('usernameField')
+}
+
+
+  onSubmit(email: string |null|undefined, username: string|null|undefined, password:string|null|undefined, event: Event) {
+    event.preventDefault();
+
+    this.user.email = email
+    this.user.username = username
+    this.user.password = password 
+    
+    this.userService.registerUser(this.user).subscribe((response) => {
+      console.log(">>>>>>>>>>>", response);
+      
+    })
+  }
+
 }

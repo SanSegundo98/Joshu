@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './Home/Home.component';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,8 @@ import { HomeComponent } from './Home/Home.component';
 })
 export class AppComponent {
   title = 'Joshu';
+
+  ngOnInit() {
+    initFlowbite();
+  }
 }

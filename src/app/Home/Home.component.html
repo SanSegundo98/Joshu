@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="flex justify-between w-[90%] h-full mx-auto mt-16">
   <div class="w-1/2 text-left regOrLoginForm">
     <form
@@ -20,6 +19,9 @@
             placeholder="Enter your email"
             formControlName="emailField"
           />
+          @if (!emailField?.valid && emailField?.dirty && emailField?.value !== '') {
+            <p class="mt-2 transition text-white/50">Email not valid</p>
+          }
         </div>
 
         <div class="flex flex-col mb-4">
@@ -68,14 +70,15 @@
                 type="radio"
                 id="loginRadio"
                 name="radioBtnHomeForm"
-                class="radioButton"
+                class="radioButton" checked
               />
               <label for="loginRadio" class="ml-3">Login</label>
             </div>
           </div>
           <button
             type="submit"
-            class="rounded bg-bright-turquoise-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-bright-turquoise-600 hover:shadow-primary-2 focus:bg-bright-turquoise-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-bright-turquoise-600 active:shadow-primary-2"
+            class="rounded bg-bright-turquoise-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-bright-turquoise-600 hover:shadow-primary-2 focus:bg-bright-turquoise-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-bright-turquoise-600 active:shadow-primary-2
+            disabled:bg-transparent disabled:text-bright-turquoise-100 disabled:border-solid disabled:border-2 disabled:border-red-600"
             (click)="
               onSubmit(
                 emailField?.value,
@@ -84,7 +87,7 @@
                 $event
               )
             "
-          >
+          [disabled]="!formNewUser.valid">
             Submit
           </button>
         </div>

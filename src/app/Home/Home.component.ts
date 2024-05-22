@@ -2,7 +2,7 @@ import { User } from './../functionality/types/user';
 import { UserService } from '../functionality/services/user.service';
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../layout/header/header.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -21,9 +21,9 @@ export class HomeComponent {
   }
 
   formNewUser = new FormGroup({
-    emailField: new FormControl<string>(''),
-    passwordField: new FormControl<string>(''),
-    usernameField: new FormControl<string>('')
+    emailField: new FormControl<string>('', [Validators.email, Validators.required]),
+    passwordField: new FormControl<string>('', Validators.required),
+    usernameField: new FormControl<string>('', [Validators.required, Validators.minLength(8)])
   }) 
 
 

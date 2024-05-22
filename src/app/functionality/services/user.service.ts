@@ -19,6 +19,8 @@ export class UserService {
   }
 
   public registerUser(user: User) {
-    return this.http.post<User>(this.urlBase.concat("/newUser"), user);
+    const test = this.http.post<User>(this.urlBase.concat("/newUser"), user);
+    
+    return test;
   }
 }

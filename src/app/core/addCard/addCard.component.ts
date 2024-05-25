@@ -18,7 +18,7 @@ export class AddCardComponent {
   @HostBinding('style.display') flex: string = 'flex'
   ApiSearchService = inject(ApiSearchService);
 
-  resSearch: any // really dont like it, but its less issues for now
+  resSearch: any = null// really dont like it, but its less issues for now
 
   searched: boolean = false
   found: boolean = false
@@ -29,6 +29,7 @@ export class AddCardComponent {
 
   onSubmit(word: string | null, event: Event) {
     event.preventDefault();
+    this.resSearch = null
 
     if (word == null) {
       console.log('nuh uh');
@@ -38,7 +39,6 @@ export class AddCardComponent {
         'GET'
       ).subscribe((data) => {
         this.resSearch = data
-        console.log(data);
       });
     }
   }

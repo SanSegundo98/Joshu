@@ -7,26 +7,5 @@
   animation: fadeRightAnimation 0.75s .5s ease-in-out forwards;
 }
   
-  @keyframes fadeLeftAnimation {
-    0% {
-      opacity: 0;
-      transform: translateX(300px); 
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0); 
-    }
-  }
-  
-  
-  @keyframes fadeRightAnimation {
-    0% {
-      opacity: 0;
-      transform: translateX(-300px); 
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0); 
-    }
-  }
+
   

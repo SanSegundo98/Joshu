@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<div class="flex flex-row-reverse self-center justify-between w-10/12 h-full p-12 m-[8rem_auto]">
+<div class="flex flex-row self-center justify-between w-10/12 h-full p-12 m-[8rem_auto]">
   <div
-    class="flex flex-col w-1/3 pl-4 border-l-2 border-solid border-purple-heart-200"
+    class="flex flex-col w-1/3 pr-4 border-r-2 border-solid search border-purple-heart-200 text-end"
   >
     <form
-      class="flex flex-col"
+      class="flex flex-col text-start"
       [formGroup]="formNewUser"
       (submit)="onSubmit(formNewUser.controls.searchbar.value, $event)"
+      
     >
       <label
         for="searchbar"
@@ -21,36 +22,48 @@
         formControlName="searchbar"
       />
     </form>
-    <div class="overflow-auto max-h-96 w-[420px] pr-6 mt-6 scroll-m-9">
-        @for (res of resSearch.data; track $index) {
-            <div
-              class="grid grid-cols-2 p-3 my-4 font-semibold bg-purple-heart-950 text-purple-heart-100 rounded-2xl "
-            >
-              <p class="text-purple-heart-100">
-                Reading: {{ res.japanese[0].reading }}
-              </p>
-              <p class="text-purple-heart-100">Word: {{ res.japanese[0].word }}</p>
-              <p class="my-1 mb-4 text-purple-heart-100 col-span-full">
-                Definition: {{ res.senses[0].english_definitions[0] }}
-              </p>
-              <span class="flex flex-row items-center col-span-full">JLPT Level:
-                @if (res.jlpt.length !== 0) {
-                    @for (jlpt of res.jlpt; track $index) {
-                        <div class="p-1 ml-1 rounded bg-light-apricot-700 text-purple-heart-200">{{jlpt}}</div>
+    @if (resSearch !== null) {
+        <div class="pr-3 mt-6 overflow-auto max-h-96 scroll-m-9 text-start">
+            @for (res of resSearch.data; track $index) {
+                <div
+                  class="grid grid-cols-2 p-3 my-4 font-semibold bg-light-apricot-300 text-purple-heart-900 rounded-2xl "
+                >
+                  <p>
+                    Reading: {{ res.japanese[0].reading }}
+                  </p>
+                  @if (!res.japanese[0].word) {
+                    <p >Word: Same as reading</p>
+                  } @else {
+                    <p >Word: {{ res.japanese[0].word }}</p>
+                  }
+                  <p class="my-1 mb-4 col-span-full">
+                    Definition: @for (def of res.senses[0].english_definitions; track $index) {
+                        @if ($index === res.senses[0].english_definitions.length-1) {
+                            {{def}}
+                        } @else {
+                            {{def}},
+                        }
                     }
-                } @else {
-                    <div class="p-1 ml-1 rounded bg-light-apricot-800 text-purple-heart-200">Not found :(</div>
-                } 
-                
-              </span>
-            </div>
-        
-            }
-    </div>
-    
-
+                  </p>
+                  <span class="flex flex-row items-center col-span-full">JLPT Level:
+                    @if (res.jlpt.length !== 0) {
+                        @for (jlpt of res.jlpt; track $index) {
+                            <div class="p-2 ml-2 rounded-xl bg-purple-heart-200 text-light-apricot-950">{{jlpt}}</div>
+                        }
+                    } @else {
+                        <div class="p-2 m-2 rounded-xl bg-light-apricot-800 text-purple-heart-50">No level associated </div>
+                    } 
+                    
+                  </span>
+                </div>
+            
+                }
+        </div>
+    }
   </div>
-  <div></div>
+  <div>
+    
+  </div>
 </div>
 
 <!-- 

@@ -1,18 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import JishoAPI from 'unofficial-jisho-api'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiSearchService {
 
-  jishoSearch:JishoAPI = new JishoAPI();
+  private serverUrl: string;
 
-  searchKanji(kanji: string ) {
-
-    this.jishoSearch.searchForKanji(kanji).then(res => {
-      console.log(res);
-    })
+  constructor(private http: HttpClient) {
+    this.serverUrl = 'http://localhost:8080/proxy';
   }
 
+  jishoRequest(url: string, method: string): Observable<any> {
+    //method = GET, since we want to fetch
+    return this.http.post<any>(this.serverUrl, {url, method})
+  }
 }

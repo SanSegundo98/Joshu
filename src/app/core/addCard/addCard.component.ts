@@ -1,6 +1,10 @@
 import { ApiSearchService } from './../../functionality/services/apiSearch.service';
-import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, HostBinding, inject } from '@angular/core';
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,19 +14,32 @@ import { RouterLink } from '@angular/router';
   templateUrl: './addCard.component.html',
   styleUrl: './addCard.component.css',
 })
-export class AddCardComponent { 
+export class AddCardComponent {
+  @HostBinding('style.display') flex: string = 'flex'
   ApiSearchService = inject(ApiSearchService);
-  resSearch: any;
 
-  searchbar = new FormControl<string | null>('', {nonNullable: true},)
+  resSearch: any // really dont like it, but its less issues for now
 
+  searched: boolean = false
+  found: boolean = false
 
-  onSubmit(kanji: string, event: Event) {
-    event.preventDefault()
+  formNewUser = new FormGroup({
+    searchbar: new FormControl<string | null>('', { nonNullable: true }),
+  });
 
-    this.resSearch = this.ApiSearchService.searchKanji(kanji)
-    console.log(this.resSearch);
-    
+  onSubmit(word: string | null, event: Event) {
+    event.preventDefault();
+
+    if (word == null) {
+      console.log('nuh uh');
+    } else {
+      this.ApiSearchService.jishoRequest(
+        'https://jisho.org/api/v1/search/words?keyword='.concat(word),
+        'GET'
+      ).subscribe((data) => {
+        this.resSearch = data
+        console.log(data);
+      });
+    }
   }
-
 }

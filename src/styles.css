@@ -4,7 +4,7 @@
 
 @layer components {
   .radioButton {
-    @apply outline-none bg-bright-turquoise-50 transition-all checked:bg-lavender-rose-700 checked:border-none focus:outline-none focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:shadow-none focus:border-none;
+    @apply outline-none bg-purple-heart-100 transition-all checked:bg-light-apricot-700 checked:border-none focus:outline-none focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:shadow-none focus:border-none;
   }
 }
 

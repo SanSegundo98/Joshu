@@ -22,8 +22,8 @@ export class HomeComponent {
 
   formNewUser = new FormGroup({
     emailField: new FormControl<string>('', [Validators.email, Validators.required]),
-    passwordField: new FormControl<string>('', Validators.required),
-    usernameField: new FormControl<string>('', [Validators.required, Validators.minLength(8)])
+    passwordField: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
+    usernameField: new FormControl<string>('', Validators.required)
   }) 
 
 

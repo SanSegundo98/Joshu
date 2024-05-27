@@ -3,12 +3,18 @@ import { HomeComponent } from './Home/Home.component';
 import { AddCardComponent } from './core/addCard/addCard.component';
 import { ManageCardsComponent } from './core/manageCards/manageCards.component';
 import { ReviewCardsComponent } from './core/reviewCards/reviewCards.component';
+import { LoginComponent } from './core/login/login.component';
 
 export const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
         title: 'Joshu'
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        title: 'Log In'
     },
     {
         path: 'addCard',

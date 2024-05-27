@@ -20,8 +20,14 @@ export class AddCardComponent {
 
   resSearch: any = null// really dont like it, but its less issues for now
 
-  searched: boolean = false
-  found: boolean = false
+  creds: string | null = null
+
+  ngOnInit() {
+    this.creds = localStorage.getItem('Token')
+    if (this.creds == null) {
+      document.location.href='/login'
+    }
+  }
 
   formNewUser = new FormGroup({
     searchbar: new FormControl<string | null>('', { nonNullable: true }),

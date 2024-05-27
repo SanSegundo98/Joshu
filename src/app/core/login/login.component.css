@@ -1,0 +1,4 @@
+.regOrLoginForm {
+    opacity: 0;
+    animation: fadeRightAnimation 0.75s ease-in-out forwards;
+  }

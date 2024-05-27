@@ -1,13 +1,29 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     RouterLink,
+    RouterModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+
+  constructor(private router: Router) {}
+
+    creds: string | null = null
+
+    ngOnInit() {
+      this.creds = localStorage.getItem('Token')
+    }
+
+    logout() {
+      localStorage.removeItem('Token')
+      window.location.reload()
+    }
+
+}

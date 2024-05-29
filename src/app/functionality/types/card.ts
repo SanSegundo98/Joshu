@@ -1,7 +1,7 @@
 export interface Card { 
     cardID: number
-    userID: number
-    example: string
-    toLearn: string
-    translation: string
+    userID: number | null
+    example: string | null | undefined
+    toLearn: string | null | undefined
+    translation: string | null | undefined
 }

@@ -72,8 +72,9 @@ export class LoginComponent {
     this.user.username = username;
     this.user.password = password;
 
-    this.userService.registerUser(this.user).subscribe((response) => {
-      localStorage.setItem('Token', <string>response.loginToken)     
+    this.userService.registerUser(this.user).subscribe((response) => {      
+      localStorage.setItem('Token', <string>response.loginToken)
+      localStorage.setItem('User ID', <string><unknown>response.userID)     
       document.location.href = '/'
     });
   }
@@ -83,6 +84,7 @@ export class LoginComponent {
 
     this.userService.fetchUser(username ? username:'', password ? password : '' ).subscribe((response) => {
       localStorage.setItem('Token', <string>response.loginToken)
+      localStorage.setItem('User ID', <string><unknown>response.userID)
       document.location.href = '/'
     });
   }

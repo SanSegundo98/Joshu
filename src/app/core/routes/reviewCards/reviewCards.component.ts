@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './reviewCards.component.html',
   styleUrl: './reviewCards.component.css',
 })
-export class ReviewCardsComponent {}
+export class ReviewCardsComponent {
+
+  constructor() {
+    if (localStorage.getItem('Token') === null) {
+      document.location.href='/'
+    }
+  }
+
+
+}

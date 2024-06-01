@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ApiSearchService } from './../../functionality/services/apiSearch.service';
-import { Component, HostBinding, inject } from '@angular/core';
+import { ApiSearchService } from '../../../functionality/services/apiSearch.service';
+import { Component, HostBinding, OnInit, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
   FormControl,
+  Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Card } from '../../functionality/types/card';
-import { CardService } from '../../functionality/services/card.service';
+import { Card } from '../../../functionality/types/card';
+import { CardService } from '../../../functionality/services/card.service';
 
 @Component({
   selector: 'app-add-card',
@@ -22,8 +23,15 @@ export class AddCardComponent {
   ApiSearchService = inject(ApiSearchService);
   cardService = inject(CardService);
 
+  constructor() {
+    if (localStorage.getItem('Token') === null) {
+      document.location.href='/'
+    }
+  }
+
   resSearch: any = null// really dont like it, but its less issues for now
   searchError: string = '';
+  addSuccess: string = '';
   creds: string | null = null
 
   card: Card = {
@@ -34,20 +42,13 @@ export class AddCardComponent {
     translation: ''
   }
 
-  ngOnInit() {
-    this.creds = localStorage.getItem('Token')
-    if (this.creds == null) {
-      document.location.href='/login'
-    }
-  }
-
   formSearchHelper = new FormGroup({
     searchbar: new FormControl<string>('', { nonNullable: true }),
   });
 
   formAddCard = new FormGroup({
-    jpWordAdd: new FormControl<string>('', {nonNullable: true}),
-    translationAdd: new FormControl<string>('', {nonNullable: true}),
+    jpWordAdd: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
+    translationAdd: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
     exampleAdd: new FormControl<string>('', {nonNullable: true})
   })
 
@@ -89,6 +90,7 @@ export class AddCardComponent {
     event: Event
   ) {
     event.preventDefault();
+    this.addSuccess = ''
 
     this.card.toLearn = originalWord;
     this.card.translation = translated;
@@ -96,7 +98,9 @@ export class AddCardComponent {
     this.card.userID = parseInt(<string><unknown>localStorage.getItem('User ID'))
 
     this.cardService.addNewCard(this.card, <string>localStorage.getItem('User ID')).subscribe((response) => {
-         console.log(response);
+         this.addSuccess = 'Card successfully added!',
+         localStorage.removeItem('Cards')
+         setTimeout(() => {this.addSuccess = ''},2000)
     });
   }
 }

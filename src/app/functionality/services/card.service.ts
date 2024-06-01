@@ -14,17 +14,23 @@ export class CardService {
     this.urlBase = "http://localhost:8080/api/cards"
   }
 
-  private errorHandler(error: any):Observable<never> {
+  private errorHandler(error: Error):Observable<never> {
     console.error(error);
     return throwError(() => new Error('Something failed, 1 sec pls ty'))
   }
 
-  public fetchCardsFromUser(userID: any):Observable<Card> {
-    return this.http.get<Card>(this.urlBase.concat('/', userID)).pipe(catchError((error) => this.errorHandler(error)))
+  public fetchCardsFromUser(userID: string):Observable<[]> {
+    return this.http.get<[]>(this.urlBase.concat('/', userID)).pipe(catchError((error) => this.errorHandler(error)))
   }
 
   public addNewCard(card: Card, userID: string) {
     return this.http.post<Card>(this.urlBase.concat('/newCard/',userID), card).pipe(catchError((error) => this.errorHandler(error)))
+  }
+  public editCard(card: Card, cardID: string) {
+    return this.http.put(this.urlBase.concat('/editedCard/', cardID), card).pipe(catchError((error) => this.errorHandler(error) ))
+  }
+  public deleteCard(cardID: string) {
+    return this.http.delete<Card>(this.urlBase.concat('/deleteCard/', cardID)).pipe(catchError((error) => this.errorHandler(error)))
   }
 
 }

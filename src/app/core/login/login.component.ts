@@ -55,6 +55,11 @@ export class LoginComponent {
     return this.formNewUser.get('usernameField');
   }
 
+  ngOnInit() {
+    if (localStorage.getItem('Token') !== null) {
+      document.location.href='/'
+    }
+  }
 
   selectedRadioIs(a: any) {
     this.selected = a.value
@@ -74,6 +79,7 @@ export class LoginComponent {
 
     this.userService.registerUser(this.user).subscribe((response) => {      
       localStorage.setItem('Token', <string>response.loginToken)
+      localStorage.setItem('Username', <string>response.username)
       localStorage.setItem('User ID', <string><unknown>response.userID)     
       document.location.href = '/'
     });
@@ -84,6 +90,7 @@ export class LoginComponent {
 
     this.userService.fetchUser(username ? username:'', password ? password : '' ).subscribe((response) => {
       localStorage.setItem('Token', <string>response.loginToken)
+      localStorage.setItem('Username', <string>response.username)
       localStorage.setItem('User ID', <string><unknown>response.userID)
       document.location.href = '/'
     });

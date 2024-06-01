@@ -1,0 +1,13 @@
+<div class="w-[90%] p-16 mx-auto main overflow-hidden">
+    <p class="text-6xl font-light text-center col-span-full text-light-apricot-400">These are your cards, {{username}}:
+    </p>
+    <div class="grid grid-cols-4 gap-20 mt-20">
+        @for (card of cardsArray; track $index) {
+        <div class="px-3 my-4 font-semibold py-9 bg-light-apricot-300 text-purple-heart-900 rounded-2xl" [routerLink]="['/card/'.concat(card.cardID.toString())]" routerLinkActive="active">
+            <p class="text-5xl font-light text-center cursor-pointer">
+                {{card.toLearn}}
+            </p>
+        </div>
+        }
+    </div>
+</div>

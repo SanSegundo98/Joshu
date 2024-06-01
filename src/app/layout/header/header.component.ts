@@ -22,7 +22,8 @@ export class HeaderComponent {
     }
 
     logout() {
-      localStorage.removeItem('Token')
+      localStorage.clear()
+      sessionStorage.clear()
       window.location.reload()
     }
 

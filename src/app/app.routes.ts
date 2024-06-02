@@ -6,6 +6,7 @@ import { ReviewCardsComponent } from './core/routes/reviewCards/reviewCards.comp
 import { LoginComponent } from './core/login/login.component';
 import { CardDetailsComponent } from './core/routes/cardDetails/cardDetails.component';
 import { EditCardComponent } from './core/routes/editCard/editCard.component';
+import { ReviewingComponent } from './core/routes/reviewing/reviewing.component';
 
 export const routes: Routes = [
     {
@@ -31,16 +32,21 @@ export const routes: Routes = [
     {
         path: 'reviewCards',
         component: ReviewCardsComponent,
-        title: 'Review your Cards'
+        title: 'Choose Cards to review'
     },
     {
         path: 'card/:cardID',
         component: CardDetailsComponent,
-        title: 'Review your Cards'
+        title: 'Details of this Card'
     },
     {
         path: 'editCard/:cardID',
         component: EditCardComponent,
+        title: 'Edit a Card'
+    },
+    {
+        path: 'reviewing',
+        component: ReviewingComponent,
         title: 'Review your Cards'
     }
 ];

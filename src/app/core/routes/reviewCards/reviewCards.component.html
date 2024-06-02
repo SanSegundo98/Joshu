@@ -1,1 +1,41 @@
-<p>reviewCards works!</p>,
+
+    <div class="mx-auto my-5 w-fit">
+        <button type="button" class="p-2 text-2xl font-semibold transition border-2 border-solid border-purple-heart-100 rounded-xl hover:border-2 hover:border-solid disabled:text-red-600 disabled:border-2 disabled:border-solid disabled:border-red-600 disabled:hover:border-red-600 disabled:hover:border-2 disabled:hover:border-solid hover:border-sky-300 hover:text-purple-heart-900 hover:bg-sky-300 text-purple-heart-100 disabled:hover:bg-transparent" [disabled]="toReview.length === 0" [routerLink]="['/reviewing']" [state]="{data: toReview}" >Start review</button>
+    </div>
+
+<div class="flex flex-row gap-10 p-16 mx-auto overflow-hidden justify-evenly main">
+    <div>
+        <p class="text-6xl font-light text-center text-light-apricot-400">Choose the cards that you want to
+            review:
+        </p>
+        <div class="grid grid-cols-4 gap-20 mt-20">
+            @for (card of cardsArray; track $index) {
+            <div
+                class="relative flex justify-center px-3 my-4 font-semibold py-9 bg-light-apricot-300 text-purple-heart-900 rounded-2xl">
+                <label for="addToReview{{$index}}" class="absolute inset-0 cursor-pointer"></label>
+                <input type="checkbox" name="addToReview" id="addToReview{{$index}}"
+                    class="absolute inset-0 w-full h-full transition opacity-0 cursor-pointer rounded-xl checked:opacity-100 checked:bg-emerald-300 checked:bg-none checked:ring-0 checked:ring-offset-0 checked:ring-transparent focus:ring-0 focus:ring-offset-0 focus:ring-transparent"
+                    (click)="toReviewArrayEdit($index)">
+                <span class="relative z-10 text-5xl font-light">
+                    {{card.toLearn}}
+                </span>
+            </div>
+
+            }
+        </div>
+    </div>
+    <div class="px-16 border-l-2 border-solid border-l-orange-500 max-h-[60vh] overflow-auto">
+        <p class="text-6xl font-light text-end text-light-apricot-400">Your chosen cards:
+        </p>
+        <div class="flex flex-col mt-10">
+            @for (reviewing of toReview; track $index) {
+            <div class="relative px-3 my-4 font-semibold py-9 bg-light-apricot-300 text-purple-heart-900 rounded-2xl">
+                <p class="text-5xl font-light text-center">
+                    {{reviewing.toLearn}}
+                </p>
+            </div>
+            }
+        </div>
+
+    </div>
+</div>

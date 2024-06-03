@@ -24,6 +24,8 @@ export class ReviewingComponent {
 
     const navigation = this.router.getCurrentNavigation();
     this.cardsToReview = navigation?.extras.state?.['data'];
+    console.log(navigation);
+    
   }
 
   fnShowExample(showExChk: HTMLInputElement) {
@@ -43,8 +45,8 @@ export class ReviewingComponent {
       this.showingAnswer = false
       this.showingExample = false
       if (this.cardsToReview.length === 0) {
-        const stats: NavigationExtras = {state: {good: this.right}};
-        this.router.navigate(['/reviewCards', stats])
+        const data: NavigationExtras = {state: {right: this.right, wrong: this.wrong, from: '/reviewing'}};
+        this.router.navigate(['/reviewCards'],data)
         
       }
     } else {

@@ -25,13 +25,13 @@ export class ReviewCardsComponent {
       document.location.href='/'
     }
     const navigation = this.router.getCurrentNavigation();
-    const fromReview = navigation?.extras.state as {good: number, bad: number, from: string}
-    console.log(navigation);
+    const fromReview = navigation?.extras.state
+    console.log(fromReview)
     
-    if (fromReview && fromReview.from === '/reviewing') {
+    if (fromReview && fromReview?.['from'] === '/reviewing') {
       this.fromReviewing = true
-      this.rightToast = fromReview.good
-      this.wrongToast = fromReview.bad
+      this.rightToast = fromReview?.['right']
+      this.wrongToast = fromReview?.['wrong']
     }
     console.log(this.rightToast, this.wrongToast, this.fromReviewing);
     
@@ -67,7 +67,7 @@ export class ReviewCardsComponent {
       event.preventDefault()      
     } else{
       const cardsToReview: NavigationExtras = {state: {cards: this.toReview}};
-      this.router.navigate(['/reviewing', cardsToReview])
+      this.router.navigate(['/reviewing'], cardsToReview)
     }
 
   }

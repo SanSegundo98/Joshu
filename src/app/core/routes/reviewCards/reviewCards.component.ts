@@ -16,12 +16,25 @@ export class ReviewCardsComponent {
   username: string | null = localStorage.getItem('Username')
   cardsArray: Card[] = []
   toReview: Card[] = [];
-
+  rightToast: number = 0
+  wrongToast: number = 0
+  fromReviewing: boolean = false
 
   constructor(private router: Router) {
     if (localStorage.getItem('Token') === null) {
       document.location.href='/'
     }
+    const navigation = this.router.getCurrentNavigation();
+    const fromReview = navigation?.extras.state as {good: number, bad: number, from: string}
+    console.log(navigation);
+    
+    if (fromReview && fromReview.from === '/reviewing') {
+      this.fromReviewing = true
+      this.rightToast = fromReview.good
+      this.wrongToast = fromReview.bad
+    }
+    console.log(this.rightToast, this.wrongToast, this.fromReviewing);
+    
   }
 
   ngOnInit() {

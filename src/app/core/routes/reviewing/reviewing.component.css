@@ -1,0 +1,4 @@
+.main {
+    opacity: 0;
+    animation: fadeLeftAnimation 0.25s ease-in-out forwards;
+}

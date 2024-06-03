@@ -1,17 +1,45 @@
-<div class="p-16 text-light-apricot-300">
-    <p class="my-20 text-center text-[144px]">{{cardsToReview[0].toLearn}}</p>
-    <div class="relative flex justify-center px-3 my-4 text-2xl font-semibold rounded-2xl">
-        <label for="showExample" class="absolute inset-0 cursor-pointer"></label>
-        <input type="checkbox" name="showExample" #showExample id="showExample"
-            class="absolute inset-0 w-full h-full transition opacity-0 cursor-pointer rounded-xl checked:ring-0 checked:ring-offset-0 checked:ring-transparent focus:ring-0 focus:ring-offset-0 focus:ring-transparent" (click)="test(showExample)">
-            @if (showExample.checked) {
-                @if (cardsToReview[0].example !== '') {
-                    <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">{{cardsToReview[0].example}}</p>
-                } @else {
-                    <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">There's no helping you with this one, bud.</p>
-                }
+<div class="p-16 text-light-apricot-300 main">
+    <p class="mt-20 mb-10 text-center text-[144px]">{{cardsToReview[0].toLearn}}</p>
+    @if (showingAnswer) {
+    <p class="my-10 text-5xl text-center">{{cardsToReview[0].translation}}</p>
+    }
+
+    @if (!showingAnswer) {
+        <div class="relative flex justify-center px-3 my-4 text-2xl font-semibold rounded-2xl">
+            <label for="showExample" class="absolute inset-0 w-1/2 mx-auto cursor-pointer"></label>
+            <input type="checkbox" name="showExample" #showExample [checked]="showingExample" id="showExample"
+                class="absolute inset-0 w-1/2 h-full mx-auto transition opacity-0 cursor-pointer rounded-xl checked:ring-0 checked:ring-offset-0 checked:ring-transparent focus:ring-0 focus:ring-offset-0 focus:ring-transparent"
+                (click)="fnShowExample(showExample)">
+            @if (showingExample) {
+            @if (cardsToReview[0].example !== '') {
+            <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">{{cardsToReview[0].example}}</p>
             } @else {
-                <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">Need a Hand?</p>
+            <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">There's no helping you with this one, bud.
+                <br>
+                <span class="text-lg">(No Helping Hand introduced, edit this card and add one!)</span>
+            </p>
             }
+            } @else {
+            <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">Need a Hand?</p>
+            }
+        </div>
+    }
+
+    <div>
+        @if (showingAnswer) {
+        <div class="flex justify-between w-2/5 mx-auto mt-20 text-3xl font-semibold row">
+            <button type="button" class="p-4 transition duration-300 bg-transparent border-2 border-solid border-emerald-300 hover:bg-emerald-300 text-emerald-300 hover:text-purple-heart-900 rounded-2xl" value="good" #good (click)="answerRating(good.value)">Correct!</button>
+            <button type="button" class="p-4 text-red-600 transition duration-300 bg-transparent border-2 border-red-800 border-solid hover:bg-red-800 hover:text-purple-heart-50 rounded-2xl" value="bad" #bad (click)="answerRating(bad.value)">Wrong...</button>
+        </div>
+        } @else {
+        <div class="relative flex justify-center px-3 mt-40 text-2xl font-semibold rounded-2xl">
+            <label for="showAnswer" class="absolute inset-0 w-1/2 mx-auto cursor-pointer"></label>
+            <input type="checkbox" name="showAnswer" #showAnswer id="showAnswer"
+                class="absolute inset-0 w-1/2 h-full mx-auto transition opacity-0 cursor-pointer rounded-xl checked:ring-0 checked:ring-offset-0 checked:ring-transparent focus:ring-0 focus:ring-offset-0 focus:ring-transparent"
+                (click)="fnShowAnswer(showAnswer)">
+            <p class="w-1/2 px-4 py-2 mx-auto text-center bg-lavender-rose-900">Show the answer?</p>
+
+        </div>
+        }
     </div>
 </div>

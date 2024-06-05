@@ -1,11 +1,6 @@
 .about {
     opacity: 0;
-    animation: fadeLeftAnimation 0.75s ease-in-out forwards;
+    animation: fadeLeftAnimation 0.55s ease-in-out forwards;
   }
-.regOrLoginForm {
-  opacity: 0;
-  animation: fadeRightAnimation 0.75s .5s ease-in-out forwards;
-}
-  
 
   

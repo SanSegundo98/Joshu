@@ -9,6 +9,7 @@ import { User } from '../types/user';
 export class UserService {
 
   private urlBase: string; 
+  public errorMsg: string = '';
 
   constructor(private http: HttpClient) {
     this.urlBase = "http://localhost:8080/api/users"
@@ -16,6 +17,9 @@ export class UserService {
 
   private errorHandler(error: any):Observable<never> {
     console.error(error);
+    this.errorMsg = error.error.message
+    console.log(this.errorMsg);
+    
     return throwError(() => new Error('Something failed, 1 sec pls ty'))
   }
 

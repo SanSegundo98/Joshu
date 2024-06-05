@@ -1,33 +1,34 @@
-<div class="w-full mt-20 text-left regOrLoginForm">
+<div class="w-full mt-40 text-left regOrLoginForm">
     <form class="flex flex-col justify-between w-11/12 px-48 py-32 mx-auto border-b-2 border-l-2 border-r-2 border-solid border-purple-heart-100"
         [formGroup]="formNewUser">
-            <div class="flex flex-row justify-around text-xl text-purple-heart-100">
+            <div class="flex flex-row justify-around text-2xl font-semibold text-purple-heart-100">
                 <div class="mb-1">
                     <input type="radio" id="registerRadio" name="radioBtnHomeForm" class="-translate-y-1 radioButton" value="register" #register (click)="selectedRadioIs(register)" checked/>
-                    <label for="registerRadio" class="ml-3 text-2xl font-semibold">Register</label>
+                    <label for="registerRadio" class="ml-3 text-3xl font-semibold">Register</label>
                 </div>
                 <div class="mt-1">
                     <input type="radio" id="loginRadio" name="radioBtnHomeForm" class="-translate-y-1 radioButton" value="login" #login (click)="selectedRadioIs(login)" >
-                    <label for="loginRadio" class="ml-3 text-2xl font-semibold">Login</label>
+                    <label for="loginRadio" class="ml-3 text-3xl font-semibold">Login</label>
                 </div>
             </div>
         
         @if (selected === 'login') {
-            <div class="w-full">  
+            <div class="w-full"> 
+                <h1 class="my-10 text-4xl font-semibold text-center text-red-500">{{userService.errorMsg}}</h1> 
                 <div class="flex flex-col mb-4">
-                    <label for="regUsername" class="my-4 font-semibold text-slate-50 text-opacity-90">Username</label>
+                    <label for="regUsername" class="my-4 text-xl font-semibold text-slate-50 text-opacity-90">Username</label>
                     <input type="text"
-                        class="p-2 duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+                        class="p-2 text-xl font-semibold duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
                         id="regUsername" placeholder="Enter your username" formControlName="usernameField" />
                 </div>
                 <div class="flex flex-col mb-12">
-                    <label for="regPassword" class="my-4 font-semibold text-slate-50 text-opacity-90">Password</label>
+                    <label for="regPassword" class="my-4 text-xl font-semibold text-slate-50 text-opacity-90">Password</label>
                     <input type="password"
-                        class="p-2 duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+                        class="p-2 text-xl duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
                         id="regPassword" placeholder="Enter your password" formControlName="passwordField" />
                 </div>
                 <button type="submit"
-                class="rounded bg-purple-heart-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-purple-heart-600 hover:text-light-apricot-100 hover:shadow-primary-2 focus:bg-purple-heart-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-purple-heart-600 active:shadow-primary-2 disabled:bg-transparent disabled:text-purple-heart-100 disabled:border-solid disabled:border-2 disabled:border-red-600"
+                class="rounded bg-purple-heart-100 px-6 pb-2 pt-2.5 text-xl font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-purple-heart-600 hover:text-light-apricot-100 hover:shadow-primary-2 focus:text-white active:text-white focus:bg-purple-heart-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-purple-heart-600 active:shadow-primary-2 disabled:bg-transparent disabled:text-purple-heart-100 disabled:border-solid disabled:border-2 disabled:border-red-600"
                 (click)="
           fetchUser(      
             usernameField?.value,
@@ -41,32 +42,37 @@
             
         } @else {
             <div class="w-full">
-                <div class="flex flex-col mb-4">
-                    <label for="regEmail" class="my-4 font-semibold text-slate-50 text-opacity-90">Email address</label>
+                <div class="flex flex-col mb-4 font-semibold">
+                    <label for="regEmail" class="my-4 text-2xl font-semibold text-slate-50 text-opacity-90">Email address</label>
                     <input type="email"
-                        class="p-2 duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+                        class="p-2 text-xl duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
                         id="regEmail" aria-describedby="registrationEmailField" placeholder="Enter your email"
                         formControlName="emailField" />
                     @if (!emailField?.valid && emailField?.dirty && emailField?.value !==
                     '') {
-                    <p class="mt-2 transition text-white/50">Email not valid</p>
+                    <p class="mt-2 font-semibold transition text-white/75">Email not valid</p>
                     }
                 </div>
     
                 <div class="flex flex-col mb-4">
-                    <label for="regUsername" class="my-4 font-semibold text-slate-50 text-opacity-90">Username</label>
+                    <label for="regUsername" class="my-4 text-2xl font-semibold text-slate-50 text-opacity-90">Username</label>
                     <input type="text"
-                        class="p-2 duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+                        class="p-2 text-xl duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
                         id="regUsername" placeholder="Enter your username" formControlName="usernameField" />
+                        
                 </div>
                 <div class="flex flex-col mb-12">
-                    <label for="regPassword" class="my-4 font-semibold text-slate-50 text-opacity-90">Password</label>
+                    <label for="regPassword" class="my-4 text-2xl font-semibold text-slate-50 text-opacity-90">Password</label>
                     <input type="password"
-                        class="p-2 duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+                        class="p-2 text-xl duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
                         id="regPassword" placeholder="Enter your password" formControlName="passwordField" />
+                        @if (!passwordField?.valid && passwordField?.dirty && passwordField?.value !==
+                    '') {
+                    <p class="mt-2 font-semibold transition text-white/75">Password not valid (must be 8 or more characters)</p>
+                    }
                 </div>
                 <button type="submit"
-                class="rounded bg-purple-heart-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-purple-heart-600 hover:text-light-apricot-100 hover:shadow-primary-2 focus:bg-purple-heart-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-purple-heart-600 active:shadow-primary-2 disabled:bg-transparent disabled:text-purple-heart-100 disabled:border-solid disabled:border-2 disabled:border-red-600"
+                class="rounded bg-purple-heart-100 px-6 pb-2 pt-2.5 text-xl font-medium uppercase h-fit self-center leading-normal text-slate-800 shadow-primary-3 transition duration-300 ease-in-out hover:bg-purple-heart-600 hover:text-light-apricot-100 hover:shadow-primary-2 focus:bg-purple-heart-600 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-purple-heart-600 active:shadow-primary-2 disabled:bg-transparent disabled:text-purple-heart-100 disabled:border-solid disabled:border-2 disabled:border-red-600"
                 (click)="
           registerUser(
             emailField?.value,

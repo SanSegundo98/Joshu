@@ -1,6 +1,6 @@
 <div class="flex flex-row justify-between p-10 m-20 main">
     <div class="flex flex-col w-3/5 gap-5 p-5 border-r-4 border-solid pl-28 border-r-lavender-rose-500">
-        <span class="mb-12 text-3xl text-lavender-rose-300 ">Your card, as it is right now:</span>
+        <span class="mb-12 text-4xl text-lavender-rose-300 ">Your card, as it is right now:</span>
         <div class="flex flex-col gap-3 mb-6 text-2xl font-semibold text-light-apricot-300">
             <span>Word to learn:</span>
             <span class="text-3xl font-normal text-purple-heart-100">{{card.toLearn}}</span>
@@ -16,22 +16,22 @@
     </div>
     <form [formGroup]="formEditCard" class="flex flex-col justify-around w-full pl-28 text-purple-heart-100">
         <div class="flex flex-col">
-            <label for="editWord" class="my-4 text-2xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Word to learn:</label>
+            <label for="editWord" class="my-4 text-3xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Word to learn:</label>
             <input type="text"
-              class="p-2 font-semibold duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+              class="p-2 text-2xl font-semibold text-white duration-200 bg-transparent rounded-sm outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
               id="editWord" #word placeholder="The word you want to change to is:" formControlName="newWord" />
           </div>
     
           <div class="flex flex-col">
-            <label for="editTL" class="my-4 text-2xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Translation:</label>
+            <label for="editTL" class="my-4 text-3xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Translation:</label>
             <input type="text"
-              class="p-2 font-semibold duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+              class="p-2 text-2xl font-semibold text-white duration-200 bg-transparent rounded-sm outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
               id="editTL" placeholder="The translation for the word above is:" formControlName="newTranslation" />
           </div>
           <div class="flex flex-col mb-16">
-            <label for="editEx" class="my-4 text-2xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Helping Hand (optional)</label>
+            <label for="editEx" class="my-4 text-3xl font-semibold text-end text-lavender-rose-100 text-opacity-90">Helping Hand (optional)</label>
             <input type="text"
-              class="p-2 font-semibold duration-200 bg-transparent rounded-sm text-white/90 outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
+              class="p-2 text-2xl font-semibold text-white duration-200 bg-transparent rounded-sm outline-2 outline focus:ring-transparent focus:ring-0 focus:outline-purple-heart-100 focus:outline focus:outline-2 outline-light-apricot-400 hover:bg-slate-50/20 hover:outline-light-apricot-600 placeholder:text-white/60"
               id="editEx" placeholder="Change your Helping Hand, if you want to:" formControlName="newExample" />
           </div>
           <div class="flex flex-row-reverse gap-12">

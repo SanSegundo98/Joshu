@@ -87,7 +87,7 @@ export class LoginComponent {
 
   fetchUser( username: string | null | undefined, password: string | null | undefined, event: Event) {
     event.preventDefault();
-
+    
     this.userService.fetchUser(username ? username:'', password ? password : '' ).subscribe((response) => {
       localStorage.setItem('Token', <string>response.loginToken)
       localStorage.setItem('Username', <string>response.username)

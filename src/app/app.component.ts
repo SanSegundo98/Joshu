@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './Home/Home.component';
+import { HomeComponent } from './home/home.component';
 import { initFlowbite } from 'flowbite';
 import { HeaderComponent } from './layout/header/header.component';
 

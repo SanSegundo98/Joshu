@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './Home/Home.component';
+import { HomeComponent } from './home/home.component';
 import { AddCardComponent } from './core/routes/addCard/addCard.component';
 import { ManageCardsComponent } from './core/routes/manageCards/manageCards.component';
 import { ReviewCardsComponent } from './core/routes/reviewCards/reviewCards.component';

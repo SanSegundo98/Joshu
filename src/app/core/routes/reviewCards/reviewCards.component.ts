@@ -59,7 +59,6 @@ export class ReviewCardsComponent {
     }    
   }
 
-  //https://stackblitz.com/edit/angular-bupuzn?file=src%2Fapp%2Ftest-navigation%2Ftest-navigation.component.ts
   sendToReview(btn: HTMLButtonElement, event: Event) {
     if (btn.validity.valid === false) {
       event.preventDefault()      

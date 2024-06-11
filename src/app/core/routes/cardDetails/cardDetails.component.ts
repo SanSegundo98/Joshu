@@ -40,14 +40,10 @@ export class CardDetailsComponent implements OnInit {
   
   openModal() {
     this.dialog = document.querySelector('dialog')
-    this.dialog?.showModal();
-    console.log(this.dialog);
-    
+    this.dialog?.showModal();   
   }
   closeModal() {  
-    this.dialog?.close()
-    console.log(this.dialog);
-    
+    this.dialog?.close()    
   }
 
   deleteCard() {

@@ -13,8 +13,8 @@ export class ApiSearchService {
     this.serverUrl = 'http://localhost:8080/proxy';
   }
 
-  jishoRequest(url: string, method: string): Observable<any> {
+  jishoRequest<T>(url: string, method: string): Observable<T> {
     //method = GET, since we want to fetch
-    return this.http.post<any>(this.serverUrl, {url, method})
+    return this.http.post<T>(this.serverUrl, {url, method})
   }
 }

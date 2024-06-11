@@ -26,14 +26,12 @@ export class ReviewCardsComponent {
     }
     const navigation = this.router.getCurrentNavigation();
     const fromReview = navigation?.extras.state
-    console.log(fromReview)
     
     if (fromReview && fromReview?.['from'] === '/reviewing') {
       this.fromReviewing = true
       this.rightToast = fromReview?.['right']
       this.wrongToast = fromReview?.['wrong']
     }
-    console.log(this.rightToast, this.wrongToast, this.fromReviewing);
     
   }
 

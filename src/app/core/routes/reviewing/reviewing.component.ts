@@ -24,17 +24,13 @@ export class ReviewingComponent {
 
     const navigation = this.router.getCurrentNavigation();
     this.cardsToReview = navigation?.extras.state?.['data'];
-    console.log(navigation);
-    
   }
 
   fnShowExample(showExChk: HTMLInputElement) {
-    console.log(showExChk.checked);
     this.showingExample = showExChk.checked
   }
 
   fnShowAnswer(showAnsChk: HTMLInputElement) {
-    console.log(showAnsChk.checked);
     this.showingAnswer = showAnsChk.checked
   }
 

@@ -26,8 +26,7 @@ export class ManageCardsComponent implements OnInit {
     if (localStorage.getItem('Cards') === null) {
       this.cardService.fetchCardsFromUser(<string>localStorage.getItem('User ID')).subscribe((response) => {
         this.cardsArray = response;
-        this.cardsArray.sort((a,b) => a.cardID - b.cardID)
-        console.log(this.cardsArray);      
+        this.cardsArray.sort((a,b) => -a.cardID - -b.cardID)
         localStorage.setItem('Cards', JSON.stringify(response));  
       })
     } else {

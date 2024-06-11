@@ -17,9 +17,7 @@ export class UserService {
 
   private errorHandler(error: any):Observable<never> {
     console.error(error);
-    this.errorMsg = error.error.message
-    console.log(this.errorMsg);
-    
+    this.errorMsg = error.error.message   
     return throwError(() => new Error('Something failed, 1 sec pls ty'))
   }
 
